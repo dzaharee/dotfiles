@@ -19,6 +19,13 @@ set smartcase                   " ... unless they contain at least one capital l
 set foldmethod=indent           " fold using indents
 set foldlevelstart=20           " start unfolded
 
+"" show bad white space
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
 "" Solarized
 set background=dark
 let g:solarized_termtrans = 1
