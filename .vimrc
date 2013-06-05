@@ -23,7 +23,9 @@ set foldlevelstart=20           " start unfolded
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+if version >= 702
+    autocmd BufWinLeave * call clearmatches()
+endif
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "" Solarized
