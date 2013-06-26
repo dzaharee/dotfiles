@@ -145,7 +145,8 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 36
+# DIR 36 (original)
+DIR 34
 # symbolic link
 LINK 35
 
@@ -421,10 +422,16 @@ EXEC 01;31  # Unix
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
 # custom file type
-.gpg 34
-.gpg 34
-.pgp 34
-.asc 34
-.3des 34
-.aes 34
-.enc 34
+.gpg 36
+.pgp 36
+.asc 36
+.3des 36
+.aes 36
+.enc 36
+# original
+# .gpg 34
+# .pgp 34
+# .asc 34
+# .3des 34
+# .aes 34
+# .enc 34
