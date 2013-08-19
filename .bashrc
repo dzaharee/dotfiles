@@ -2,7 +2,15 @@
 #
 # 2013-06-08
 
-export PS1="\[\e[36m\]\u\[\e[33m\]@\[\e[32m\]\h\[\e[33m\]:\[\e[34m\]\w\[\e[33m\]$ \[\e[0m\]"
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+cyan=$(tput setaf 6)
+reset=$(tput sgr0)
+
+PS1='\[$cyan\]\u\[$yellow\]@\[$green\]\h\[$yellow\]:\[$blue\]\w\[$yellow\]\$ \[$reset\]'
+
+export PS1
 
 set -o vi
 
