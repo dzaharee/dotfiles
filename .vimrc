@@ -21,11 +21,12 @@ set foldlevelstart=20           " start unfolded
 
 "" show bad white space
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-if version >= 702
-    autocmd BufWinLeave * call clearmatches()
-endif
+autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"if version >= 702
+"    autocmd BufWinLeave * call clearmatches()
+"endif
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "" Solarized
