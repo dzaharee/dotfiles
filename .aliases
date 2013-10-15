@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# .aliases  bash alias file
+#
+# 2013-10-15
+
+alias ls="ls -Ga --color=auto"
+alias vi="vim"
