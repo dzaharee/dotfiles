@@ -33,6 +33,6 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "" Solarized
-set background=dark
+set background=light
 let g:solarized_termtrans = 1
 colorscheme solarized
