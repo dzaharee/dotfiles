@@ -22,7 +22,9 @@ set -o vi
 source ~/.aliases
 
 # use directory colours that work with Solarized
-eval `dircolors ~/.dir_colors`
+if hash dircolors 2>/dev/null; then
+    eval `dircolors ~/.dir_colors`
+fi
 
 # load up local config if it exists
 if [ -f ~/.bashrc_local ]; then source ~/.bashrc_local; fi
