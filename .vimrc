@@ -35,6 +35,9 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 "endif
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
+"" Add syntax highlighting for .cljx
+autocmd BufNewFile,BufReadPost *.cljx setfiletype clojure
+
 "" Solarized
 set background=light
 let g:solarized_termtrans = 1
