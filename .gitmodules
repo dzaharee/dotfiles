@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/paredit.vim"]
 	path = .vim/bundle/paredit.vim
 	url = https://github.com/vim-scripts/paredit.vim.git
+[submodule ".vim/bundle/conque-shell"]
+	path = .vim/bundle/conque-shell
+	url = https://github.com/vim-scripts/Conque-Shell.git
