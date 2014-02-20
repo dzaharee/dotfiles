@@ -2,3 +2,7 @@ set editing-mode vi
 tab: complete
 set completion-ignore-case on
 set blink-matching-paren on
+
+set meta-flag on
+set convert-meta off
+set output-meta on
