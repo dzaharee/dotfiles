@@ -85,6 +85,8 @@
 (setq cider-repl-history-size 4000)
 (setq cider-repl-history-file "~/.emacs.d/repl-history")    ; save repl history
 (setq cider-popup-stacktraces nil)  ; stop error buffer popping up when not in repl
+(setq cider-repl-use-clojure-font-lock t)   ; use clojure-mode for coloring cider (also gets use our custom stuff)
+(setq cider-repl-use-pretty-printing t)     ; pretty print by default
 
 ;; add more syntax highlighting to clojure-mode
 (defface clojure-special-chars
