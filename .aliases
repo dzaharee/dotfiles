@@ -1,8 +1,10 @@
 #!/bin/bash
 #
 # .aliases  bash alias file
-#
-# 2013-10-15
 
 alias ls="ls -Ga --color=auto"
 alias vi="vim"
+alias vim="emacs"
+alias emacs="TERM=xterm-16color emacs -nw"
+alias which="type"
+alias tmux="TERM=screen-256color-bce tmux"
