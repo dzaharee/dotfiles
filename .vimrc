@@ -63,7 +63,7 @@ let g:ConqueTerm_ReadUnfocused = 1  " we want this so we can see our repl is rea
 
 " get clojure syntax in our new repl
 function! ConqueStartup(term)
-    if a:term.command == 'lein repl :connect'
+    if a:term.command == 'lein repl :connect' || a:term.command == 'lein repl'
         setlocal syntax=clojure
         syntax clear ExtraWhitespace            " turn of end of line highlighting for the repl
     endif
@@ -79,7 +79,13 @@ call conque_term#register_function('buffer_enter', 'ConqueEnter')
 
 "" connect to a repl using conque and lein repl with :Repl
 function! Repl()
+    let replportfile = findfile('.nrepl-port', ';')
+    if empty(replportfile)
+        let replcommand = 'lein repl'
+    else
+        let replcommand = 'lein repl :connect'
+    endif
     " I like the repl always appearing to the right -dzaharee
-    let repl = conque_term#open('lein repl :connect', ['botright vsplit'], 1)
+    let repl = conque_term#open(replcommand, ['botright vsplit'], 1)
 endfunction
 command Repl call Repl()
