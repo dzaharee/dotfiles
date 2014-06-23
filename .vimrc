@@ -1,7 +1,3 @@
-""" pathogen
-execute pathogen#infect()
-call pathogen#helptags()
-
 set nocompatible                " choose no compatibility with legacy vi
 syntax enable
 set encoding=utf-8
@@ -44,48 +40,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-"" Add syntax highlighting for .cljx
-autocmd BufNewFile,BufReadPost *.cljx setfiletype clojure
-
 "" Solarized
 set background=light
 let g:solarized_termtrans = 1
 colorscheme solarized
-
-
-"""""""""
-"" conque
-""""""""
-
-" conque options
-let g:ConqueTerm_FastMode = 1       " don't know if we actually care, but lets do this
-let g:ConqueTerm_ReadUnfocused = 1  " we want this so we can see our repl is ready
-
-" get clojure syntax in our new repl
-function! ConqueStartup(term)
-    if a:term.command == 'lein repl :connect' || a:term.command == 'lein repl'
-        setlocal syntax=clojure
-        syntax clear ExtraWhitespace            " turn of end of line highlighting for the repl
-    endif
-endfunction
-call conque_term#register_function('after_startup', 'ConqueStartup')
-
-" put us where we want to be when we enter the repl buffer (we need this the
-" way we're opening it)
-function! ConqueEnter(term)
-    normal! G$
-endfunction
-call conque_term#register_function('buffer_enter', 'ConqueEnter')
-
-"" connect to a repl using conque and lein repl with :Repl
-function! Repl()
-    let replportfile = findfile('.nrepl-port', ';')
-    if empty(replportfile)
-        let replcommand = 'lein repl'
-    else
-        let replcommand = 'lein repl :connect'
-    endif
-    " I like the repl always appearing to the right -dzaharee
-    let repl = conque_term#open(replcommand, ['botright vsplit'], 1)
-endfunction
-command Repl call Repl()
