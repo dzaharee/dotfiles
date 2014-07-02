@@ -1,8 +1,10 @@
 # .profile
 #
-# 2012-01-25T18:54Z
+# 2014-07-02
 
-EDITOR=vim;   	export EDITOR
-PAGER=less;  	export PAGER
+export EDITOR=vim
+export PAGER=less
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin; export PATH
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin
+
+if [ -f ~/.profile_local ]; then source ~/.profile_local; fi
