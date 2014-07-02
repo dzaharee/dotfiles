@@ -44,3 +44,8 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 set background=light
 let g:solarized_termtrans = 1
 colorscheme solarized
+
+"" Source local settings
+if filereadable($HOME."/.vimrc_local")
+    source ~/.vimrc_local
+endif
