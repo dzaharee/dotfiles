@@ -13,7 +13,7 @@ yellow=$(tput setaf 3)
 blue=$(tput setaf 4)
 cyan=$(tput setaf 6)
 reset=$(tput sgr0)
-export PS1='\[$cyan\]\u\[$yellow\]@\[$green\]\h\[$yellow\]:\[$blue\]\w\[$yellow\]\$ \[$reset\]'
+export PS1='\[$cyan\]\u\[$yellow\]@\[$green\]\h\[$yellow\]:\[$blue\]\W\[$yellow\]\$ \[$reset\]'
 
 # bash vi mode
 set -o vi
