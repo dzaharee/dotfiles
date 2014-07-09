@@ -30,22 +30,10 @@
 (require 'evil)
 (evil-mode 1)
 
-;; don't litter our folders with emacs crap
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
+;; Don't create backup files, and move auto-save files
+(setq make-backup-files nil)
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-;; delete old backups
-(message "Deleting old backup files...")
-(let ((week (* 60 60 24 7))
-      (current (float-time (current-time))))
-  (dolist (file (directory-files temporary-file-directory t))
-    (when (and (backup-file-name-p file)
-               (> (- current (float-time (nth 5 (file-attributes file))))
-                  week))
-      (message "%s" file)
-      (delete-file file))))
 
 ;; paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
