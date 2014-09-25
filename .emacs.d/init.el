@@ -20,6 +20,7 @@
                        better-defaults         ;; minimal emacs default "fixing"
                        cider                   ;; Clojure IDE and Repl for emacs
                        paredit                 ;; manage s-expressions
+                       less-css-mode           ;; major mode for LESS CSS
                        ))
 (dolist (p package-list)
   (when (not (package-installed-p p))
