@@ -1,6 +1,4 @@
 # .profile
-#
-# 2014-09-25
 
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"

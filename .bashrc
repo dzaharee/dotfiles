@@ -1,8 +1,6 @@
 #!/bin/bash
 #
 # .bashrc
-#
-# 2013-10-15
 
 # check for interactive
 [[ $- = *i* ]] || return
