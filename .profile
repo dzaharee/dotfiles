@@ -1,8 +1,9 @@
 # .profile
 #
-# 2014-07-02
+# 2014-09-25
 
-export EDITOR=vim
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"
 export PAGER=less
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin

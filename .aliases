@@ -4,5 +4,6 @@
 
 alias ls="ls -Ga --color=auto"
 alias emacs="TERM=xterm-16color emacs -nw"
+alias emax="emacsclient -t"
 alias which="type"
 alias tmux="TERM=screen-256color-bce tmux"
