@@ -1,7 +1,7 @@
 # .profile
 
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"
+export EDITOR="TERM=xterm-16color emacsclient -tc"
 export PAGER=less
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin
