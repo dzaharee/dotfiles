@@ -18,7 +18,7 @@
                        clojure-mode            ;; clojure support
                        clojure-test-mode       ;; clojure test support
                        better-defaults         ;; minimal emacs default "fixing"
-                       cider                   ;; Clojure IDE and Repl for emacs
+;;                       cider                   ;; Clojure IDE and Repl for emacs
                        paredit                 ;; manage s-expressions
                        ))
 (dolist (p package-list)
@@ -66,15 +66,11 @@
 
 ;; misc clojure stuff
 (add-hook 'clojure-mode-hook 'paredit-mode)     ; paredit w/ clojure
-(add-hook 'cider-repl-mode-hook 'paredit-mode)  ; paredit in the repl
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)   ; eldoc in repl
-(setq nrepl-hide-special-buffers t)
-(setq cider-repl-wrap-history t)
-(setq cider-repl-history-size 4000)
-(setq cider-repl-history-file "~/.emacs.d/repl-history")    ; save repl history
-(setq cider-popup-stacktraces nil)  ; stop error buffer popping up when not in repl
-(setq cider-repl-use-clojure-font-lock t)   ; use clojure-mode for coloring cider (also gets use our custom stuff)
-(setq cider-repl-use-pretty-printing t)     ; pretty print by default
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (setq inferior-lisp-program "clojure-repl")))
+(add-hook 'inferior-lisp-mode-hook 'paredit-mode)
+
 
 ;; add more syntax highlighting to clojure-mode
 (defface clojure-special-chars
