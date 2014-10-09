@@ -50,9 +50,6 @@
 
 ;; solarized color theme
 (load-theme 'solarized-light t)
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (load-theme 'solarized-light t)))
 
 ;; fix colors we don't care for
 (set-face-attribute 'font-lock-builtin-face t :foreground "blue")
