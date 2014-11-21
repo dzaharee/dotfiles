@@ -42,6 +42,7 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'inferior-lisp-mode-hook 'paredit-mode)
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp))
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-}") 'paredit-forward-barf-sexp))
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp))
@@ -63,20 +64,7 @@
             (font-lock-add-keywords nil
                                     '(("\\<\\(TODO\\|FIXME\\):" 1 font-lock-warning-face t)))))
 
-;; misc clojure stuff
-(add-hook 'clojure-mode-hook 'paredit-mode)     ; paredit w/ clojure
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (setq inferior-lisp-program "clojure-repl")))
-(add-hook 'inferior-lisp-mode-hook 'paredit-mode)
-(add-hook 'inferior-lisp-mode-hook
-          (lambda ()
-            (set-syntax-table clojure-mode-syntax-table)))
-;; TODO: some day we might want to use inferior lisp with something
-;; other than clojure, so we'll need a smarter way to do this
-
 (require 'clojure-mode-extra-font-locking)
-
 ;; add more syntax highlighting to clojure-mode
 (defface clojure-special-chars
   '((t (:foreground "red")))
@@ -84,8 +72,23 @@
 (defface clojure-delimiter-chars
   '((t (:foreground "yellow")))
   "Used for clojure delimiters [](){}")
-(add-hook 'clojure-mode-hook (lambda () (font-lock-add-keywords nil '(("[`~@#'%]" . 'clojure-special-chars)
-                                                                      ("[][(){}]" . 'clojure-delimiter-chars)))))
+(defun supplement-clojure-font-lock ()
+  "Add our extra clojure syntax highlighting"
+  (font-lock-add-keywords nil '(("[`~@#'%]" . 'clojure-special-chars)
+                                ("[][(){}]" . 'clojure-delimiter-chars))))
+
+;; misc clojure stuff
+(add-hook 'clojure-mode-hook 'paredit-mode)     ; paredit w/ clojure
+(add-hook 'clojure-mode-hook 'supplement-clojure-font-lock)
+
+(defun clj-repl ()
+  "Start a clojure repl using inferior-lisp mode"
+  (interactive)
+  (split-window nil nil 'left)
+  (inferior-lisp "clojure-repl")
+  (set-syntax-table clojure-mode-syntax-table)
+  (clojure-font-lock-setup)
+  (supplement-clojure-font-lock))
 
 ;; smex
 (global-set-key  (kbd "M-x") 'smex)
