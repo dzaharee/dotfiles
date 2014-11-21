@@ -104,9 +104,9 @@
 ;; trailing whitespace
 (setq-default show-trailing-whitespace t)
 
-;; make tabs work how we like (width 4 w/ spaces)
-(setq default-tab-width 4)
-(setq tab-stop-list (number-sequence 4 200 4))
+;; make tabs work how we like (width 2 w/ spaces)
+(setq default-tab-width 2)
+(setq tab-stop-list (number-sequence 2 200 2))
 (setq-default indent-tabs-mode nil)
 (defun better-tab ()
   "When at column 0, indent the line, otherwise do a normal tab"
