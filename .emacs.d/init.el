@@ -15,10 +15,9 @@
                        color-theme-solarized   ;; color theme
                        smex                    ;; Smart M-x
                        ido-ubiquitous          ;; smart-completion everywhere
-                       clojure-mode            ;; clojure support
-                       clojure-test-mode       ;; clojure test support
+                       clojure-mode
+                       clojure-mode-extra-font-locking
                        better-defaults         ;; minimal emacs default "fixing"
-;;                       cider                   ;; Clojure IDE and Repl for emacs
                        paredit                 ;; manage s-expressions
                        ))
 (dolist (p package-list)
@@ -71,6 +70,7 @@
             (setq inferior-lisp-program "clojure-repl")))
 (add-hook 'inferior-lisp-mode-hook 'paredit-mode)
 
+(require 'clojure-mode-extra-font-locking)
 
 ;; add more syntax highlighting to clojure-mode
 (defface clojure-special-chars
