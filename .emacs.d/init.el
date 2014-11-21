@@ -69,6 +69,11 @@
           (lambda ()
             (setq inferior-lisp-program "clojure-repl")))
 (add-hook 'inferior-lisp-mode-hook 'paredit-mode)
+(add-hook 'inferior-lisp-mode-hook
+          (lambda ()
+            (set-syntax-table clojure-mode-syntax-table)))
+;; TODO: some day we might want to use inferior lisp with something
+;; other than clojure, so we'll need a smarter way to do this
 
 (require 'clojure-mode-extra-font-locking)
 
