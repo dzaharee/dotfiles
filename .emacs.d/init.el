@@ -81,14 +81,24 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)     ; paredit w/ clojure
 (add-hook 'clojure-mode-hook 'supplement-clojure-font-lock)
 
-(defun clj-repl ()
+(defun ensure-clj-repl ()
   "Start a clojure repl using inferior-lisp mode"
-  (interactive)
-  (split-window nil nil 'left)
   (inferior-lisp "clojure-repl")
+  (rename-buffer "*clj-repl*")
   (set-syntax-table clojure-mode-syntax-table)
   (clojure-font-lock-setup)
   (supplement-clojure-font-lock))
+
+(defun clj-repl ()
+  "Switch to existing clojure repl or start a new one"
+  (interactive)
+  (let ((repl-window (get-buffer-window "*clj-repl*")))
+    (if repl-window
+        (progn
+          (select-window repl-window)
+          (rename-buffer "*inferior-lisp*"))
+        (split-window nil nil 'left)))
+  (ensure-clj-repl))
 
 ;; smex
 (global-set-key  (kbd "M-x") 'smex)
