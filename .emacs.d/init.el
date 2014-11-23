@@ -94,10 +94,10 @@
   (interactive)
   (let ((repl-window (get-buffer-window "*clj-repl*")))
     (if repl-window
-        (progn
-          (select-window repl-window)
-          (rename-buffer "*inferior-lisp*"))
+        (select-window repl-window)
         (split-window nil nil 'left)))
+  (when (switch-to-buffer "*clj-repl*")
+        (rename-buffer "*inferior-lisp*"))
   (ensure-clj-repl))
 
 ;; smex
