@@ -1,8 +1,8 @@
 # .profile
 
-export EDITOR="TERM=xterm-16color emacs -nw"
+export EDITOR=vim
 export PAGER=less
 
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 if [ -f ~/.profile_local ]; then source ~/.profile_local; fi

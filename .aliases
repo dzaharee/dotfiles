@@ -2,7 +2,5 @@
 #
 # .aliases  bash alias file
 
-alias ls="ls -a --color=auto"
-alias emacs="TERM=xterm-16color emacs -nw"
+alias vi=vim
 alias which="type"
-alias tmux="TERM=screen-256color-bce tmux"
