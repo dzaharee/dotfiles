@@ -17,6 +17,7 @@
                        ido-ubiquitous          ;; smart-completion everywhere
                        clojure-mode
                        clojure-mode-extra-font-locking
+                       hy-mode
                        better-defaults         ;; minimal emacs default "fixing"
                        paredit                 ;; manage s-expressions
                        ))
@@ -43,6 +44,7 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'inferior-lisp-mode-hook 'paredit-mode)
+(add-hook 'hy-mode-hook 'paredit-mode)
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp))
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-}") 'paredit-forward-barf-sexp))
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp))
