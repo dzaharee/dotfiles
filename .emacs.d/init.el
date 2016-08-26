@@ -49,7 +49,8 @@
 (eval-after-load 'paredit '(define-key paredit-mode-map (kbd "M-{") 'paredit-backward-barf-sexp))
 
 ;; solarized color theme
-(load-theme 'solarized-light t)
+(set-terminal-parameter nil 'background-mode 'light)
+(load-theme 'solarized t)
 
 ;; fix colors we don't care for
 (set-face-attribute 'font-lock-builtin-face t :foreground "blue")
